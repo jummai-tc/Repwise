@@ -1,0 +1,427 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Repwise design system — "Night Deck"
+   A near-black canvas with a green undertone, graphite panels that lift off it
+   by one step of lightness rather than by shadow, and an electric mint reserved
+   for actions: buttons, the active tab, meters, focus. Dark theme only — the
+   product reads as a piece of training equipment, not a document.
+
+   Two colour jobs are kept deliberately apart:
+     · UI accent (--primary, ~L 0.82) — buttons, active states, meters.
+     · Data marks (--macro-*, --chart-*, ~L 0.66) — anything plotted on a
+       surface. Bright UI mint glares as a bar fill; these sit in the dark-mode
+       lightness band and were validated for contrast and colour-vision
+       separation before being written down.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* --- surfaces ---------------------------------------------------------- */
+  /* Elevation is lightness, not shadow: background → surface → surface-muted.
+     Nothing here is pure black, so borders and glows still have somewhere
+     to go. */
+  --background: #080c0a;         /* the canvas */
+  --background-soft: #0d1310;    /* banded sections, hero surfaces */
+  --background-strong: #040706;  /* the deepest step: insets, wells */
+  --surface: #121a16;            /* cards */
+  --surface-muted: #1a241f;      /* tracks, inputs, secondary fills */
+  --surface-hover: #222e28;
+  --border: #202b25;             /* hairline that reads on both steps */
+  --border-strong: #33443b;
+
+  /* --- text -------------------------------------------------------------- */
+  --foreground: #edf5f0;         /* soft white, never #fff — kills the glare */
+  --muted: #a2b3aa;              /* 8.1:1 on --surface */
+  --subtle: #7d8f86;             /* 5.2:1 on --surface */
+
+  /* --- brand mint (UI accent) -------------------------------------------- */
+  --primary: #3fe08f;
+  --primary-hover: #5ceba3;      /* dark themes brighten on hover, not darken */
+  --primary-active: #2cc478;
+  --primary-foreground: #04140c; /* 11:1 on --primary */
+  --primary-soft: #12271d;       /* badge and icon-chip backgrounds */
+  --primary-soft-hover: #173325;
+  --primary-soft-strong: #1d4331;
+  --primary-mid: #08ad72;        /* the plotted green — see the note above */
+  --primary-light: #8ff0c0;
+  --focus-ring: rgba(63, 224, 143, 0.35);
+
+  /* --- semantic ---------------------------------------------------------- */
+  --success: #3fe08f;
+  --success-soft: #12271d;
+  --warning: #f0b429;
+  --warning-soft: #2a2009;
+  --danger: #ff7a6b;
+  --danger-soft: #2c1512;
+  --info: #55b6ff;
+  --info-soft: #0d2130;
+
+  /* --- data marks -------------------------------------------------------- */
+  /* Validated as a categorical set against --surface in dark mode: OKLCH L in
+     0.48–0.67, chroma above the gray floor, worst-pair ΔE 9.9 under simulated
+     deuteranopia and 20.1 unsimulated, all above 3:1 contrast. Every bar that
+     uses one is also directly labelled, so identity never rests on hue alone. */
+  --macro-protein: #08ad72;
+  --macro-carbs: #0195f5;
+  --macro-fat: #c88302;
+
+  /* De-emphasis fill for the "one bar is the point, the rest are context" case.
+     A green-leaning gray at 3.5:1 on --surface: readable as a bar, quiet enough
+     that the highlighted one still wins. */
+  --chart-neutral: #5f7269;
+
+  /* --- elevation --------------------------------------------------------- */
+  /* On a dark canvas a drop shadow is nearly invisible, so these are deeper and
+     do the job of separating a floating layer from what is behind it. Ambient
+     lift comes from --glow instead. */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 44px rgba(0, 0, 0, 0.7);
+  --glow: 0 0 0 1px rgba(63, 224, 143, 0.14), 0 8px 30px rgba(63, 224, 143, 0.09);
+
+  /* --- radii (two-step scale used everywhere) ---------------------------- */
+  --radius-control: 12px;  /* buttons, inputs, chips */
+  --radius-card: 16px;     /* cards, panels */
+  --radius-panel: 20px;    /* sheets, hero surfaces */
+
+  /* --- layout ------------------------------------------------------------ */
+  /* Navigation lives in the bottom tab bar at every breakpoint, so pages need
+     bottom clearance rather than a left gutter. */
+  --content-max: 72rem;
+  --topbar-height: 4.5rem;
+  --tabbar-height: 4.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
+  --color-background-strong: var(--background-strong);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-strong: var(--primary-soft-strong);
+  --color-primary-mid: var(--primary-mid);
+  --color-primary-light: var(--primary-light);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-macro-protein: var(--macro-protein);
+  --color-macro-carbs: var(--macro-carbs);
+  --color-macro-fat: var(--macro-fat);
+  --color-chart-neutral: var(--chart-neutral);
+
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Nothing should ever scroll sideways. */
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    color: var(--foreground);
+    letter-spacing: -0.018em;
+    line-height: 1.25;
+  }
+
+  /* Stat numerals must not shift width while animating or updating. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  ::selection {
+    background: var(--primary-soft-strong);
+    color: var(--primary-light);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Grid and flex children default to `min-width: auto`, which makes them
+     refuse to shrink below their content's intrinsic width and pushes the
+     page sideways on narrow screens. `:where` keeps specificity at 0, so any
+     explicit min-w-* utility still wins. */
+  :where(.grid) > *,
+  :where(.flex) > * {
+    min-width: 0;
+  }
+
+  /* Consistent numeric inputs: no spinners anywhere. */
+  input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Dark scrollbars, or every overflow container flashes a white gutter. */
+  * {
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+/* ==========================================================================
+   Typography scale — one place, so hierarchy stays consistent
+   ========================================================================== */
+
+@layer components {
+  .text-page-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+  }
+  @media (min-width: 1024px) {
+    .text-page-title { font-size: 1.875rem; }
+  }
+
+  .text-section-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 650;
+    letter-spacing: -0.014em;
+  }
+
+  .text-card-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Headline metric inside a stat card. */
+  .text-stat {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.024em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-stat-lg {
+    font-family: var(--font-display), sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The one number the dashboard leads with. */
+  .text-hero-figure {
+    font-family: var(--font-display), sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-caption {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .text-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+
+  /* ---- surfaces ---------------------------------------------------------- */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-interactive {
+    transition:
+      box-shadow 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease,
+      transform 0.18s ease;
+  }
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+  }
+  .card-interactive:active {
+    transform: translateY(1px);
+  }
+
+  /* The hero panel. A single mint light source in the top-right corner, a
+     second cooler one bottom-left, over the deepest surface step — enough to
+     make the panel feel lit rather than filled. */
+  .panel-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-panel);
+    background:
+      radial-gradient(120% 140% at 88% -20%, rgba(63, 224, 143, 0.16) 0%, transparent 58%),
+      radial-gradient(90% 120% at 4% 108%, rgba(1, 149, 245, 0.10) 0%, transparent 55%),
+      linear-gradient(168deg, #16211b 0%, #0c1310 62%, #090f0c 100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* A faint engineering grid behind the hero content. Pure texture: it is
+     aria-hidden and never carries meaning. */
+  .panel-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(237, 245, 240, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(237, 245, 240, 0.028) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(120% 100% at 50% 0%, #000 0%, transparent 72%);
+  }
+
+  /* An inset well — used for tracks and grouped mini-stats inside a card, so
+     they read as cut into the surface rather than stacked on it. */
+  .well {
+    background: var(--background-strong);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-control);
+  }
+}
+
+@layer utilities {
+  /* ---- marquee ----------------------------------------------------------- */
+
+  /* A row that scrolls its contents right-to-left forever. The track holds the
+     same list twice, so translating it exactly -50% lands the second copy
+     where the first started and the loop is seamless — which is why the
+     duplicate in the component is not optional.
+
+     Motion pauses on hover and on keyboard focus: a quote moving past at
+     constant speed is unreadable the moment someone actually tries to read it. */
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    /* Fades the rows into the section edges instead of cutting them off. */
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 8rem,
+      #000 calc(100% - 8rem),
+      transparent 100%
+    );
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee-left var(--marquee-duration, 60s) linear infinite;
+  }
+
+  .marquee:hover .marquee__track,
+  .marquee:focus-within .marquee__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-left {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* The global reduced-motion rule collapses the animation to nothing, which
+     would leave the overflow permanently clipped. Hand the row back to the
+     user as an ordinary scroller instead. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+      mask-image: none;
+    }
+    .marquee__track {
+      animation: none;
+    }
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Safe-area helpers for the mobile tab bar. */
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+
+  /* Ambient mint lift for the one element on a screen that should glow. */
+  .glow { box-shadow: var(--glow); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
