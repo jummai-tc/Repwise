@@ -44,7 +44,7 @@ export default async function SignUpPage({
       <SignUpForm />
 
       <p className="text-caption mt-6 text-center text-xs">
-        Repwise gives general fitness and nutrition guidance, not medical
+        Repwisely gives general fitness and nutrition guidance, not medical
         advice. Check with a doctor before starting a new programme.
       </p>
 

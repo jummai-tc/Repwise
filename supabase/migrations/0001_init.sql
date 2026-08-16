@@ -1,4 +1,4 @@
--- Repwise — initial schema
+-- Repwisely — initial schema
 -- Every user-owned table carries user_id and is protected by RLS so one
 -- account can never read another's data. Child tables denormalise user_id
 -- (rather than joining to the parent in the policy) because RLS runs per row

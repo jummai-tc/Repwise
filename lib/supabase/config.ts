@@ -1,5 +1,5 @@
 /**
- * Repwise is built to be runnable before Supabase credentials exist, so the
+ * Repwisely is built to be runnable before Supabase credentials exist, so the
  * UI can be developed in phases 1-2 without an account. Anything auth-gated
  * checks this first and no-ops when the project is not wired up yet.
  */

@@ -31,7 +31,7 @@ export default function AuthLayout({
               </svg>
             </span>
             <span className="font-display text-[1.0625rem] font-bold tracking-[-0.02em]">
-              Repwise
+              Repwisely
             </span>
           </span>
         </Link>
@@ -60,7 +60,7 @@ export default function AuthLayout({
         </div>
 
         <p className="relative z-10 text-[0.8125rem] text-subtle">
-          Repwise gives general fitness guidance, not medical advice.
+          Repwisely gives general fitness guidance, not medical advice.
         </p>
       </aside>
 

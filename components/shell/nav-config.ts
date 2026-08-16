@@ -42,7 +42,7 @@ export function titleForPath(pathname: string) {
   const hit = PAGE_TITLES.find(
     (p) => pathname === p.match || pathname.startsWith(`${p.match}/`),
   );
-  return hit?.title ?? "Repwise";
+  return hit?.title ?? "Repwisely";
 }
 
 export function isActivePath(pathname: string, href: string) {

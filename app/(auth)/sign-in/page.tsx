@@ -44,7 +44,7 @@ export default async function SignInPage({
       <SignInForm next={next} />
 
       <p className="mt-8 text-center text-sm text-muted">
-        New to Repwise?{" "}
+        New to Repwisely?{" "}
         <Link href="/sign-up" className="font-medium text-primary hover:underline">
           Create an account
         </Link>

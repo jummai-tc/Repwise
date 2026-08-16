@@ -1,4 +1,4 @@
--- Repwise exercise library.
+-- Repwisely exercise library.
 -- Reference data, not user data: it ships as a migration so `supabase db push`
 -- leaves a new project fully usable, and re-running it is harmless.
 -- location_tags drives whether a movement can appear in a home plan, a gym

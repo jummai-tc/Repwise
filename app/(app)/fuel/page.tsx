@@ -34,7 +34,7 @@ export default async function FuelPage() {
         <EmptyState
           icon={Utensils}
           title="No targets yet"
-          description="Build your plan and Repwise works out your calories, macros and water target from your profile — then this page tracks what you actually eat against them."
+          description="Build your plan and Repwisely works out your calories, macros and water target from your profile — then this page tracks what you actually eat against them."
           action={<BuildPlanButton />}
         />
       </>

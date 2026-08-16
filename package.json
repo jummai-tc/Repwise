@@ -1,8 +1,8 @@
 {
-  "name": "repwise",
+  "name": "repwisely",
   "version": "0.1.0",
   "private": true,
-  "description": "Repwise \u2014 AI-powered fitness and nutrition tracking. Train smarter, every rep.",
+  "description": "Repwisely \u2014 AI-powered fitness and nutrition tracking. Train smarter, every rep.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

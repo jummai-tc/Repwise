@@ -36,7 +36,7 @@ export type CoachSnapshot = {
 const HISTORY_TURNS = 10;
 
 const SYSTEM = `
-You are the user's strength and nutrition coach inside Repwise, a training app.
+You are the user's strength and nutrition coach inside Repwisely, a training app.
 You are talking to someone who trains, not to a patient and not to a beginner
 who needs everything caveated.
 

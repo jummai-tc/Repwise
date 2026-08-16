@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Repwise wordmark: a rep-counter glyph plus the name. */
+/** Repwisely wordmark: a rep-counter glyph plus the name. */
 export function Logo({
   className,
   showText = true,
@@ -38,14 +38,14 @@ export function Logo({
             inverted ? "text-white" : "text-foreground",
           )}
         >
-          {/* "Rep" carries the mint, "wise" stays neutral. Kept as two spans
+          {/* "Rep" carries the mint, "wisely" stays neutral. Kept as two spans
               inside one text node so the word is still selected, copied and
-              read aloud as "Repwise". On the hero the lighter mint holds up
+              read aloud as "Repwisely". On the hero the lighter mint holds up
               over photography, where full-strength --primary goes muddy. */}
           <span className={inverted ? "text-primary-light" : "text-primary"}>
             Rep
           </span>
-          wise
+          wisely
         </span>
       )}
     </span>

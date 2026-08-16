@@ -22,7 +22,7 @@ export type Testimonial = {
   meta: string;
   /** The headline outcome, short enough to read at marquee speed. */
   result: string;
-  /** How long they had been using Repwise when they said it. */
+  /** How long they had been using Repwisely when they said it. */
   duration: string;
   quote: string;
 };
@@ -36,7 +36,7 @@ export const TESTIMONIALS: Testimonial[] = [
     result: "−8.4 kg",
     duration: "5 months",
     quote:
-      "I had two dumbbells and a spare room, and every other app kept handing me cable machines. Repwise asked what I actually owned and built around it. Eight kilos down without ever setting foot in a gym.",
+      "I had two dumbbells and a spare room, and every other app kept handing me cable machines. Repwisely asked what I actually owned and built around it. Eight kilos down without ever setting foot in a gym.",
   },
   {
     id: "t2",

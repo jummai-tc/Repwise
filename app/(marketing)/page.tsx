@@ -60,7 +60,7 @@ const STEPS = [
   {
     n: "02",
     title: "Get your plan",
-    body: "Repwise builds a full training week and matching nutrition targets, and explains the reasoning behind both.",
+    body: "Repwisely builds a full training week and matching nutrition targets, and explains the reasoning behind both.",
   },
   {
     n: "03",
@@ -69,7 +69,7 @@ const STEPS = [
   },
 ];
 
-/** Product facts, not social proof — every number here is something Repwise does. */
+/** Product facts, not social proof — every number here is something Repwisely does. */
 const PROOF = [
   { value: 6, suffix: "", label: "Onboarding questions", sub: "About two minutes, start to finish" },
   { value: 40, suffix: "+", label: "Exercises in the library", sub: "Barbell, dumbbell, machine and bodyweight" },
@@ -123,7 +123,7 @@ export default function LandingPage() {
               </h2>
               <p className="mt-4 text-muted">
                 Most people stop tracking because it lives across four different
-                apps. Repwise keeps training, food and progress on one screen.
+                apps. Repwisely keeps training, food and progress on one screen.
               </p>
             </div>
           </Reveal>
@@ -286,7 +286,7 @@ export default function LandingPage() {
                   Your first plan is two minutes away
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-muted">
-                  Answer six short questions and Repwise writes your training
+                  Answer six short questions and Repwisely writes your training
                   week and your nutrition targets before you close the tab.
                 </p>
                 <Link href="/sign-up" className="mt-8 inline-block">
@@ -305,7 +305,7 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <Logo />
           <p className="max-w-md text-[0.8125rem] leading-relaxed text-subtle">
-            Repwise offers general fitness and nutrition guidance and is not
+            Repwisely offers general fitness and nutrition guidance and is not
             medical advice. Talk to a doctor or registered dietitian before
             starting a new programme, especially if you have an existing health
             condition.

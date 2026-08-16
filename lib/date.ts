@@ -2,7 +2,7 @@
  * Date helpers shared by the data layer and the screens.
  *
  * Everything the user logs is bucketed by *server* local date rather than the
- * browser's. On a single-timezone deployment those agree; if Repwise ever
+ * browser's. On a single-timezone deployment those agree; if Repwisely ever
  * ships across timezones this is the one place that needs revisiting.
  */
 

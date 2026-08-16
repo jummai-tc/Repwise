@@ -23,13 +23,13 @@ import { cn } from "@/lib/utils";
 import { CountUp, usePrefersReducedMotion } from "@/components/ui/count-up";
 
 /* ==========================================================================
-   Glassmorphism trust hero — Repwise edition
+   Glassmorphism trust hero — Repwisely edition
    A dark, cinematic band that opens the light-themed landing page. The photo
    carries the drama; frosted panels sit on top of it holding real product
    numbers. Everything below this section returns to the yellow canvas.
    ========================================================================== */
 
-/** The disciplines strip. Icons stand in for the training styles Repwise plans. */
+/** The disciplines strip. Icons stand in for the training styles Repwisely plans. */
 const DISCIPLINES = [
   { name: "Strength", icon: Dumbbell },
   { name: "Hypertrophy", icon: Trophy },
@@ -238,7 +238,7 @@ export function GlassmorphismTrustHero() {
 
             <Rise delay={280}>
               <p className="max-w-xl text-base leading-relaxed text-white/65 lg:text-[1.0625rem]">
-                Repwise turns your body stats, your goal and your equipment into
+                Repwisely turns your body stats, your goal and your equipment into
                 a training plan and a nutrition plan that fit your actual life —
                 then adapts them as you train.
               </p>

@@ -54,7 +54,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-[var(--topbar-height)] max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" aria-label="Repwise home">
+        <Link href="/" aria-label="Repwisely home">
           <Logo tone={solid ? "default" : "inverted"} />
         </Link>
 

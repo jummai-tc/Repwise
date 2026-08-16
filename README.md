@@ -1,4 +1,4 @@
-# Repwise
+# Repwisely
 
 **Train smarter, every rep.** An AI-powered fitness and nutrition web app: it
 turns your body stats, goal and available equipment into a personalised workout
@@ -242,4 +242,4 @@ proxy.ts             session refresh + route gating (Next 16 renamed `middleware
 
 ## Disclaimer
 
-Repwise provides general fitness and nutrition guidance, not medical advice.
+Repwisely provides general fitness and nutrition guidance, not medical advice.

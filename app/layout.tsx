@@ -17,12 +17,12 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Repwise — Train smarter, every rep",
-    template: "%s · Repwise",
+    default: "Repwisely — Train smarter, every rep",
+    template: "%s · Repwisely",
   },
   description:
     "Personalised training and nutrition plans that adapt to your body, your goals and where you train.",
-  applicationName: "Repwise",
+  applicationName: "Repwisely",
 };
 
 export const viewport: Viewport = {

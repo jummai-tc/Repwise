@@ -22,7 +22,7 @@ export const identitySchema = z.object({
       if (Number.isNaN(d.getTime())) return false;
       const age = (Date.now() - d.getTime()) / 31_557_600_000;
       return age >= 13 && age <= 100;
-    }, "You must be between 13 and 100 to use Repwise"),
+    }, "You must be between 13 and 100 to use Repwisely"),
   sex: z.enum(["male", "female", "other", "prefer_not_to_say"], {
     error: "Please choose an option",
   }),

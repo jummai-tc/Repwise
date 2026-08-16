@@ -58,7 +58,7 @@ export default async function SettingsPage() {
         </Card>
 
         <p className="text-caption mt-6 pb-4 text-center">
-          Repwise gives general fitness and nutrition guidance, not medical
+          Repwisely gives general fitness and nutrition guidance, not medical
           advice. Speak to a doctor or registered dietitian about anything
           clinical.
         </p>
