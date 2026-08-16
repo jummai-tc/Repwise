@@ -15,14 +15,34 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const SITE_URL = "https://www.repwisely.com";
+
+const DESCRIPTION =
+  "Personalised training and nutrition plans that adapt to your body, your goals and where you train.";
+
 export const metadata: Metadata = {
+  /* Resolves the relative URLs Next.js emits for Open Graph and Twitter cards.
+     Without it those tags fall back to localhost in dev and to the Vercel
+     preview host in production, so shared links preview the wrong origin. */
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Repwisely — Train smarter, every rep",
     template: "%s · Repwisely",
   },
-  description:
-    "Personalised training and nutrition plans that adapt to your body, your goals and where you train.",
+  description: DESCRIPTION,
   applicationName: "Repwisely",
+  openGraph: {
+    type: "website",
+    siteName: "Repwisely",
+    url: SITE_URL,
+    title: "Repwisely — Train smarter, every rep",
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Repwisely — Train smarter, every rep",
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
