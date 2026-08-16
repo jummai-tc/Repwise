@@ -2,6 +2,7 @@ import "server-only";
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import type { ProfileRow } from "@/lib/supabase/database.types";
 
 /**
@@ -9,6 +10,11 @@ import type { ProfileRow } from "@/lib/supabase/database.types";
  * exist so a page never has to think about "what if there is no session".
  */
 export async function getUser() {
+  // No Supabase project wired up yet: preview mode, same as the proxy and the
+  // auth actions take. Without this every signed-in screen throws out of
+  // createClient() instead of rendering empty.
+  if (!isSupabaseConfigured()) return null;
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -18,6 +24,10 @@ export async function getUser() {
 
 /** For pages that cannot render at all without a session. */
 export async function requireUser(next?: string) {
+  // Nothing to require in preview mode, and /sign-in cannot mint a session
+  // there either — redirecting would only bounce the visitor in a loop.
+  if (!isSupabaseConfigured()) return null;
+
   const user = await getUser();
   if (!user) {
     redirect(next ? `/sign-in?next=${encodeURIComponent(next)}` : "/sign-in");
